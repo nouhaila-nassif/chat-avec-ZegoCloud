@@ -1,0 +1,43 @@
+<!-- register.component.html -->
+<div class="register-container">
+  <h2 class="text-center mb-4">Create Your Account</h2>
+  <form (ngSubmit)="onSubmit()" #form="ngForm" class="register-form">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        [(ngModel)]="user.username"
+        name="username"
+        required
+        class="form-control"
+        [ngClass]="{'is-invalid': username.invalid && username.touched, 'is-valid': username.valid && username.touched}"
+        #username="ngModel"
+      >
+      <div *ngIf="username.invalid && username.touched" class="invalid-feedback">
+        Username is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="user.password"
+        name="password"
+        required
+        class="form-control"
+        [ngClass]="{'is-invalid': password.invalid && password.touched, 'is-valid': password.valid && password.touched}"
+        #password="ngModel"
+      >
+      <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
+        Password is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block mt-3" [disabled]="!form.valid">Register</button>
+  </form>
+
+  <div *ngIf="message" class="message mt-3 text-center">{{ message }}</div>
+</div>

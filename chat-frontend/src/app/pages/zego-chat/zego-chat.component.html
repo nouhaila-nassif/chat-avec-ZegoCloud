@@ -1,0 +1,16 @@
+<div id="root"></div> <!-- Zego UI Container -->
+
+<div class="chat-container">
+  <div class="messages-container">
+    <div *ngFor="let message of messages" class="message">
+      <p>{{ message }}</p>
+    </div>
+  </div>
+
+  <div class="input-container">
+    <input [(ngModel)]="messageInput" placeholder="Type a message" />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
+
+<button (click)="logout()">Logout</button>
